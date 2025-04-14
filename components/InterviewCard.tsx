@@ -7,11 +7,11 @@ import { Link } from 'lucide-react';
 import DisplayTechIcons from './DisplayTechIcons';
 
 const InterviewCard = ({interviewId, userId, role, type, 
-    techstack,_createdAt}: InterviewCardProps) => {
+    techstack, createdAt}: InterviewCardProps) => {
         
         const feedback=null as Feedback | null;
         const normalizedType=/mix/gi.test(type) ? 'Mixed' : type;
-        const formattedDate=dayjs(feedback?.createdAt || _createdAt || 
+        const formattedDate=dayjs(feedback?.createdAt || createdAt || 
             Date.now()).format('MMM D, YYYY');
   return (
     <div className='card-border w-[360px] max-sm:w-full min-h-96'>
@@ -49,8 +49,8 @@ const InterviewCard = ({interviewId, userId, role, type,
                 <DisplayTechIcons techStack={techstack}/>
 
                 <Button className='btn-primary'>
-                    <Link href={feedback? `/interview/${interviewId}/feedback`:
-                '/interview/${interviewId}'}>
+                    <Link href={feedback ? `/interview/${interviewId}/feedback`:
+                `/interview/${interviewId}`}>
                     {feedback ? 'Check Feedback' : 'View Interview'}
                 </Link>
                 </Button>
